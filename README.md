@@ -1,8 +1,13 @@
 ud120-projects
 ==============
 
-Starter project code for students taking Udacity ud120
+again updated Starter project code for students taking Udacity ud120
 
+
+random stufff
+
+
+ 
 ### Setup
 - Create a virtual environment for Python 3.9 or higher.
 - $ pip install -r requirements.txt
