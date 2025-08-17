@@ -43,8 +43,19 @@ import numpy as np
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score 
 import sys
+import os
 from time import time
-sys.path.append("../tools/")
+
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the path to the tools directory
+tools_path = os.path.join(script_dir, '../tools')
+
+# Add the tools directory to the system path
+sys.path.append(tools_path)
+# sys.path.append("../tools/") - REMOVE THIS STATEMENT AFTER CONFIRMED WORKING
+# Now you can import correctly
 from email_preprocess import preprocess
 
 ### Load the data
