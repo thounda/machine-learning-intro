@@ -31,34 +31,37 @@ TIP
 
 '''
 
-    
-import sys
-from time import time
-sys.path.append("../tools/")
-from email_preprocess import preprocess
-
-
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 
 ##############################################################
 # Enter Your Code Here
+# Load modules
+
+import numpy as np
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score 
+import sys
+from time import time
+sys.path.append("../tools/")
+from email_preprocess import preprocess
 
 ### Load the data
 features_train, features_test, labels_train, labels_test = preprocess()
 
 # Create the classifier
-
+clf = GaussianNB()
 
 # Train the classifier
-
+clf.fit(features_train, labels_train)
 
 # Make predictions
-
+predictions = clf.predict(features_test)
 
 # Calculate accuracy
-
+accuracy = accuracy_score(labels_test, predictions)
+print("Accuracy:", accuracy)
 
 
 ##############################################################
