@@ -39,23 +39,23 @@ TIP
 # Enter Your Code Here
 # Load modules
 
+import sys
+import os
 import numpy as np
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score 
-import sys
-import os
 from time import time
 
 # Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
+current_dir = os.path.dirname(__file__)
 
 # Construct the path to the tools directory
-tools_path = os.path.join(script_dir, '../tools')
+tools_dir = os.path.join(current_dir, '../tools/')
 
 # Add the tools directory to the system path
-sys.path.append(tools_path)
-# sys.path.append("../tools/") - REMOVE THIS STATEMENT AFTER CONFIRMED WORKING
-# Now you can import correctly
+sys.path.append(tools_dir)
+
+# Now you can import your preprocess function
 from email_preprocess import preprocess
 
 ### Load the data
@@ -64,11 +64,15 @@ features_train, features_test, labels_train, labels_test = preprocess()
 # Create the classifier
 clf = GaussianNB()
 
-# Train the classifier
+# Record the time for training
+t0 = time()
 clf.fit(features_train, labels_train)
+print("Training Time:", round(time() - t0, 3), "s")
 
-# Make predictions
+# Record the time for making predictions
+t0 = time()
 predictions = clf.predict(features_test)
+print("Predicting Time:", round(time() - t0, 3), "s")
 
 # Calculate accuracy
 accuracy = accuracy_score(labels_test, predictions)
